@@ -12,7 +12,6 @@
 --  See the License for the specific language governing permissions and
 --  limitations under the License.
 
-with Ada.Characters.Handling;
 with Ada.Characters.Latin_1;
 with Ada.Strings.Bounded;
 with Ada.Strings.Unbounded;
@@ -57,7 +56,7 @@ package body JSON.Types is
          elsif C = '"' then
             raise Program_Error;
          elsif C /= '\' then
-            if Ada.Characters.Handling.Is_Control (C) then
+            if Character'Pos (C) <= 31 then
                raise Program_Error;
             end if;
             SB.Append (Value, C);
