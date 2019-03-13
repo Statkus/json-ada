@@ -38,11 +38,8 @@ package body JSON.Tokenizers is
 
          if Escaped then
             case C is
-               when '"' | '\' | '/' | 'b' | 'f' | 'n' | 'r' | 't' =>
+               when '"' | '\' | '/' | 'b' | 'f' | 'n' | 'r' | 't' | 'u' =>
                   null;
-               when 'u' =>
-                  --  TODO Support escaped unicode
-                  raise Program_Error with "Escaped unicode not supported yet";
                when others =>
                   raise Tokenizer_Error with "Unexpected escaped character in string";
             end case;

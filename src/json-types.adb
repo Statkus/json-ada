@@ -38,7 +38,7 @@ package body JSON.Types is
       for C of Text loop
          if Escaped then
             case C is
-               when '"' | '\' | '/' =>
+               when '"' | '\' | '/' | 'u' =>
                   SB.Append (Value, C);
                when 'b' =>
                   SB.Append (Value, BS);
